@@ -1,0 +1,33 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+
+                    <#input id="username" name="用户名" underline="true"/>
+                            <#input id="password" name="密码" underline="true"/>
+                            <#input id="nickname" name="账号" underline="true"/>
+                            <#input id="phone" name="手机号"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="email" name="邮件" underline="true"/>
+                            <#input id="money" disabled="disabled" name="余额" underline="true"/>
+                            <#avatar id="pic" name="头像" underline="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="VipInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="VipInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/vip/vip_info.js"></script>
+@}

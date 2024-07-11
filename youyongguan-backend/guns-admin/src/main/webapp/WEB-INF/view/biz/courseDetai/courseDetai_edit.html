@@ -1,0 +1,39 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="id" value="${item.id}" disabled="diabled" underline="true"/>
+                    <#input id="userId" name="用户Id" value="${item.userId}" disabled="diabled"  underline="true"/>
+                    <#input id="userName" name="用户名" value="${item.userName}" disabled="diabled"  underline="true"/>
+                    <#input id="courseId" name="课程Id" value="${item.courseId}" disabled="diabled"  underline="true"/>
+                    <#input id="courseName" name="课程名" value="${course.name}" disabled="diabled"  underline="true"/>
+                    <#input id="coachName" name="教练" value="${course.coachName}" disabled="diabled"  underline="true"/>
+                </div>
+
+                <div class="col-sm-6">
+
+                    <#input id="num" name="报名人数" value="${course.num}" disabled="diabled"  underline="true"/>
+                    <#input id="maxNum" name="最大报名数" value="${course.maxNum}" disabled="diabled"  underline="true"/>
+
+                    <#select id="status" name="审批状态" value="${item.status}" disabled="disabled" underline="true">
+                                <option value="通过">通过</option>
+                                <option value="拒绝">拒绝</option>
+                            </#select>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="CourseDetaiInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="CourseDetaiInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/biz/courseDetai/courseDetai_info.js"></script>
+@}

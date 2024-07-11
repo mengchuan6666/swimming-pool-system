@@ -1,0 +1,31 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="orderDate" name="预定日期" underline="true"/>
+                            <#input id="orderTime" name="预定时间" underline="true"/>
+                             <#input id="userName" name="用户名" underline="true"/>
+
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="status" name="审批状态"  underline="true"/>
+                            <#input id="num" name="预约人数" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="SiteDetaiInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="SiteDetaiInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/biz/siteDetai/siteDetai_info.js"></script>
+@}

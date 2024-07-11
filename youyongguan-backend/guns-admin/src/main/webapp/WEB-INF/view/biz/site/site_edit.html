@@ -1,0 +1,48 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="Id" value="${item.id}" disabled="disabled" underline="true"/>
+                            <#input id="name" name="场地名称" value="${item.name}" underline="true"/>
+                    <#input id="desc" name="场地描述" value="${item.desc}" underline="true"/>
+
+                    <#input id="price" name="场地价格" value="${item.price}" underline="true"/>
+                    <#select id="status" name="场地状态" underline="true" value="${item.status}">
+                    <option value="${item.status}">${item.status}</option>
+                    @if(item.status != "开启"){
+                    <option value="开启">开启</option>
+                    @}else{
+                    <option value="关闭">关闭</option>
+                    @}
+                    </#select>
+                </div>
+
+                <div class="col-sm-6">
+                    <#select id="deviceInfo" name="场地设备信息" value="${item.deviceInfo}" underline="true">
+                    <option value="${item.deviceInfo}">${item.deviceInfo}</option>
+                    @for(device in list){
+                    @if(item.deviceInfo != device.name){
+                    <option value=${device.name}>${device.name}</option>
+                    @}
+                    @}
+                </#select>
+                    <#avatar id="pic" name="场地图片" underline="true" avatarImg="${item.pic}"/>
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="SiteInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="SiteInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/biz/site/site_info.js"></script>
+@}

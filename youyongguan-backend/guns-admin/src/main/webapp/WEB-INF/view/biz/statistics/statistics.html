@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="${ctxPath}/static/js/common/echarts.min.js"></script>
+<script src="${ctxPath}/static/js/jquery.min.js?v=2.1.4"></script>
+
+
+<!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+<div id="main" style="width: 800px;height:400px;margin-left:50px;float: left" ></div>
+<div id="main1" style="width: 800px;height:400px;margin-left:50px;float: left"></div>
+<div id="main2" style="width: 1700px;height:400px;margin-left:50px;float: left;"></div>
+
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var myChart1 = echarts.init(document.getElementById('main1'));
+    var myChart2 = echarts.init(document.getElementById('main2'));
+
+
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '游泳人数统计'
+        },
+        tooltip: {},
+        legend: {
+            data: ['游泳人数']
+        },
+        xAxis: {
+            data: []
+        },
+        yAxis: {},
+        series: [
+            {
+                name: '游泳人数',
+                type: 'bar',
+                data: []
+            }
+        ]
+    };
+    var option1 = {
+        title: {
+            text: '场馆收支统计'
+        },
+        tooltip: {},
+        legend: {
+            data: ['场馆收入']
+        },
+        xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [
+            {
+                name: '场馆收入',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }
+        ]
+    };
+    var option2 = {
+        title: {
+            text: '会员充值统计'
+        },
+        tooltip: {},
+        legend: {
+            data: ['充值金额']
+        },
+        xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [
+            {
+                name: '充值金额',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }
+        ]
+    };
+
+    $.ajax({
+        url : window.location.protocol+"/statistics/num",
+        type : "GET",
+        data: {},
+        success: function (r) {
+            console.log(r)
+            option.series[0].data = r.y
+            option.xAxis.data=r.x
+            myChart.setOption(option)//使用刚指定的配置项和数据显示图表。
+        }
+    });//ajax结束
+
+    //场馆收入
+    $.ajax({
+        url : window.location.protocol+"/statistics/income",
+        type : "GET",
+        data: {},
+        success: function (r) {
+            console.log(r)
+            option1.series[0].data = r.y
+            option1.xAxis.data=r.x
+            myChart1.setOption(option1)//使用刚指定的配置项和数据显示图表。
+        }
+    });//ajax结束
+
+    //充值金额
+    $.ajax({
+        url : window.location.protocol+"/statistics/recharge",
+        type : "GET",
+        data: {},
+        success: function (r) {
+            console.log(r)
+            option2.series[0].data = r.y
+            option2.xAxis.data=r.x
+            myChart2.setOption(option2)//使用刚指定的配置项和数据显示图表。
+        }
+    });//ajax结束
+
+</script>
+</body>
+</html>

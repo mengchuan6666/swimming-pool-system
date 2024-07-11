@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/xingguang.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>游泳管理系统</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="ele-admin-loading"></div>
+      <style>
+        .ele-admin-loading {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .ele-admin-loading:before {
+          content: '';
+          width: 30px;
+          height: 30px;
+          margin: 0 auto;
+          display: block;
+          border-radius: 50%;
+          background: #409eff;
+          animation: loading-bounce 0.3s cubic-bezier(0.05, 0, 0.2, 1) infinite
+            alternate;
+        }
+
+        .ele-admin-loading:after {
+          content: '';
+          width: 10px;
+          height: 2px;
+          margin: 0 auto;
+          display: block;
+          border-radius: 50%;
+          background: #bbb;
+          animation: loading-shadow 0.3s cubic-bezier(0.05, 0, 0.2, 1) infinite
+            alternate;
+        }
+
+        @keyframes loading-bounce {
+          from {
+            transform: translateY(0);
+          }
+          to {
+            transform: translateY(-40px);
+          }
+        }
+
+        @keyframes loading-shadow {
+          from {
+            transform: scale(1, 1);
+            opacity: 1;
+          }
+          to {
+            transform: scale(3, 2);
+            opacity: 0.3;
+          }
+        }
+      </style>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

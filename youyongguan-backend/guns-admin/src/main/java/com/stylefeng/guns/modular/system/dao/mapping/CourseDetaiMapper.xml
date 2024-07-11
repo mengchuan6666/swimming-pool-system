@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.CourseDetaiMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.CourseDetai">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="status" property="status" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, user_name, status
+    </sql>
+
+    <select id="list" resultType="map">
+        select d.id,d.user_id userId,d.user_name userName,d.status,
+        c.id couseId,c.name courseName,c.price ,c.pic,c.coach_name coachName,c.num,c.max_num maxNum
+        from biz_course_detai d
+        join biz_course c on c.id=d.course_id
+        <if test="condition != null and condition != ''">
+            where user_name like CONCAT('%',#{condition},'%')
+        </if>
+    </select>
+
+</mapper>
